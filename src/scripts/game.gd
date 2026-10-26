@@ -152,7 +152,6 @@ func start_game() -> void:
 		else:
 			_assign_role.rpc_id(player_id, Player.Role.USER)
 	
-	print(_topics)
 	var st: Array[Dictionary]
 	for t: Topic in _topics:
 		st.append(t.serialized())
