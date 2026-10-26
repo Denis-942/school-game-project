@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cuaunoxjedrjy"]
+
+[ext_resource type="Script" uid="uid://cuy23l147w5by" path="res://src/scripts/test.gd" id="1_pq8q7"]
+[ext_resource type="Script" uid="uid://cajcxskmr3jdn" path="res://src/scripts/player_spawner.gd" id="2_pyidc"]
+[ext_resource type="PackedScene" uid="uid://b8w42iwgm4chm" path="res://src/scenes/player.tscn" id="3_vvh5c"]
+
+[node name="Root" type="Node" unique_id=855036723]
+
+[node name="UIRoot" type="Control" parent="." unique_id=735676337 node_paths=PackedStringArray("server_button", "client_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pq8q7")
+server_button = NodePath("VBoxContainer/ServerButton")
+client_button = NodePath("VBoxContainer/ClientButton")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot" unique_id=915874550]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -44.0
+offset_right = 64.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="ServerButton" type="Button" parent="UIRoot/VBoxContainer" unique_id=1324417487]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Server"
+
+[node name="ClientButton" type="Button" parent="UIRoot/VBoxContainer" unique_id=2110377434]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Client"
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="." unique_id=319144870]
+_spawnable_scenes = PackedStringArray("uid://b8w42iwgm4chm")
+spawn_path = NodePath("..")
+script = ExtResource("2_pyidc")
+player_scene = ExtResource("3_vvh5c")
+metadata/_custom_type_script = "uid://cajcxskmr3jdn"

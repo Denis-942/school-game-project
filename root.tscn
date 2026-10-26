@@ -1,0 +1,729 @@
+[gd_scene format=3 uid="uid://cuaunoxjedrjy"]
+
+[ext_resource type="Script" uid="uid://cuy23l147w5by" path="res://src/scripts/ui.gd" id="1_pq8q7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvh5c"]
+bg_color = Color(0, 0, 0, 0.2509804)
+expand_margin_left = 2.0
+expand_margin_top = 25.0
+expand_margin_right = 2.0
+expand_margin_bottom = 25.0
+
+[node name="Root" type="Node" unique_id=855036723]
+
+[node name="Players" type="Node" parent="." unique_id=1827655955]
+
+[node name="UIRoot" type="Control" parent="." unique_id=735676337 node_paths=PackedStringArray("main_menu", "main_menu_nickname_line_edit", "main_menu_host_button", "main_menu_join_button", "main_menu_topics_text_edit", "main_menu_update_topics_button", "host_menu", "host_menu_room_name_line_edit", "host_menu_room_max_players_spin_box", "host_menu_room_port_spin_box", "host_menu_create_room_button", "join_menu", "join_menu_room_ip_address_line_edit", "join_menu_room_port_spin_box", "join_menu_join_button", "room_menu", "room_menu_start_button", "room_menu_leave_button", "room_menu_room_max_players_label", "room_menu_room_ip_address_label", "room_menu_room_port_label", "room_menu_room_player_list_vbox", "room_menu_game_ui", "room_menu_game_argument_text_edit", "room_menu_game_decision_option_button", "room_menu_game_send_state_button", "room_menu_game_arguments_vbox", "room_menu_game_question_text_edit", "room_menu_game_question_receiver_option_button", "room_menu_game_question_send_button", "room_menu_game_answer_text_edit", "room_menu_game_answer_receiver_option_button", "room_menu_game_answer_send_button", "room_menu_game_questions_and_answers_vbox", "room_menu_game_role_label", "back_buttons", "error_labels")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pq8q7")
+main_menu = NodePath("MainMenu")
+main_menu_nickname_line_edit = NodePath("MainMenu/VBoxContainer/HBoxContainer/NicknameLineEdit")
+main_menu_host_button = NodePath("MainMenu/VBoxContainer/HostButton")
+main_menu_join_button = NodePath("MainMenu/VBoxContainer/JoinButton")
+main_menu_topics_text_edit = NodePath("MainMenu/TopicsTextEdit")
+main_menu_update_topics_button = NodePath("MainMenu/TopicsTextEdit/UpdateTopicsButton")
+host_menu = NodePath("HostMenu")
+host_menu_room_name_line_edit = NodePath("HostMenu/VBoxContainer/HBoxContainer/RoomNameLineEdit")
+host_menu_room_max_players_spin_box = NodePath("HostMenu/VBoxContainer/HBoxContainer3/MaxPlayersSpinBox")
+host_menu_room_port_spin_box = NodePath("HostMenu/VBoxContainer/HBoxContainer2/RoomPortSpinBox")
+host_menu_create_room_button = NodePath("HostMenu/VBoxContainer/CreateRoomButton")
+join_menu = NodePath("JoinMenu")
+join_menu_room_ip_address_line_edit = NodePath("JoinMenu/VBoxContainer/HBoxContainer/RoomIPAddressLineEdit")
+join_menu_room_port_spin_box = NodePath("JoinMenu/VBoxContainer/HBoxContainer2/RoomPortSpinBox")
+join_menu_join_button = NodePath("JoinMenu/VBoxContainer/JoinButton")
+room_menu = NodePath("RoomMenu")
+room_menu_start_button = NodePath("RoomMenu/Buttons/StartGameButton")
+room_menu_leave_button = NodePath("RoomMenu/Buttons/LeaveRoomButton")
+room_menu_room_max_players_label = NodePath("RoomMenu/RoomInfo/RoomMaxPlayersLabel")
+room_menu_room_ip_address_label = NodePath("RoomMenu/RoomInfo/RoomIPAddressLabel")
+room_menu_room_port_label = NodePath("RoomMenu/RoomInfo/RoomPortLabel")
+room_menu_room_player_list_vbox = NodePath("RoomMenu/RoomState/PlayerList")
+room_menu_game_ui = NodePath("RoomMenu/GameUI")
+room_menu_game_argument_text_edit = NodePath("RoomMenu/GameUI/GameState/GameInputs/Argument/ArgumentTextEdit")
+room_menu_game_decision_option_button = NodePath("RoomMenu/GameUI/GameState/GameInputs/Decision/DecisionOptionButton")
+room_menu_game_send_state_button = NodePath("RoomMenu/GameUI/GameState/GameInputs/SendStateButton")
+room_menu_game_arguments_vbox = NodePath("RoomMenu/GameUI/GameState/Arguments/ScrollContainer/Arguments")
+room_menu_game_question_text_edit = NodePath("RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/Question/QuestionTextEdit")
+room_menu_game_question_receiver_option_button = NodePath("RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/QuestionTo/QuestionToOptionButton")
+room_menu_game_question_send_button = NodePath("RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/SendQuestionButton")
+room_menu_game_answer_text_edit = NodePath("RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/Answer/QuestionTextEdit")
+room_menu_game_answer_receiver_option_button = NodePath("RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/AnswerTo/QuestionToOptionButton")
+room_menu_game_answer_send_button = NodePath("RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/SendAnswerButton")
+room_menu_game_questions_and_answers_vbox = NodePath("RoomMenu/GameUI/GameState/QnA/ScrollContainer/Arguments")
+room_menu_game_role_label = NodePath("RoomMenu/GameUI/RoleLabel")
+back_buttons = [NodePath("HostMenu/VBoxContainer/BackButton"), NodePath("JoinMenu/VBoxContainer/BackButton")]
+error_labels = NodePath("Other/ErrorLabels")
+metadata/_edit_lock_ = true
+
+[node name="Other" type="Control" parent="UIRoot" unique_id=1297396500]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="ErrorLabels" type="VBoxContainer" parent="UIRoot/Other" unique_id=38650231]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+alignment = 2
+reverse_sort = true
+
+[node name="GameplayOverlay" type="Control" parent="UIRoot" unique_id=2073885208]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MainMenu" type="Control" parent="UIRoot" unique_id=813058915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="GameTitleLabel" type="Label" parent="UIRoot/MainMenu" unique_id=75068674]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -210.0
+offset_right = 124.5
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Nazwa Gry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/MainMenu" unique_id=816491704]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -15.5
+offset_right = 100.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/MainMenu/VBoxContainer" unique_id=15966899]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/MainMenu/VBoxContainer/HBoxContainer" unique_id=1211246236]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Nazwa"
+
+[node name="NicknameLineEdit" type="LineEdit" parent="UIRoot/MainMenu/VBoxContainer/HBoxContainer" unique_id=595801078]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Wpisz swój nick..."
+
+[node name="HostButton" type="Button" parent="UIRoot/MainMenu/VBoxContainer" unique_id=587234153]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Hostuj"
+
+[node name="JoinButton" type="Button" parent="UIRoot/MainMenu/VBoxContainer" unique_id=1651110315]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Dołącz"
+
+[node name="TopicTemplateTextEdit" type="TextEdit" parent="UIRoot/MainMenu" unique_id=995193722]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 50.0
+offset_right = 325.0
+offset_bottom = 225.0
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "[
+	{
+		\"type\": <0|1>, // 0 = Fałsz, 1 = Prawda
+		\"header\": <string>,
+		\"text\": <string>
+	},
+]"
+editable = false
+
+[node name="Label2" type="Label" parent="UIRoot/MainMenu/TopicTemplateTextEdit" unique_id=866437274]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = -35.0
+offset_right = 60.0
+offset_bottom = -12.0
+grow_horizontal = 2
+text = "Szablon tematów ( JSON )"
+
+[node name="TopicsTextEdit" type="TextEdit" parent="UIRoot/MainMenu" unique_id=499458788]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -425.00006
+offset_right = 325.0
+offset_bottom = -25.000061
+grow_vertical = 0
+text = "[{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},]"
+
+[node name="Label" type="Label" parent="UIRoot/MainMenu/TopicsTextEdit" unique_id=821745323]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -12.0
+grow_horizontal = 2
+text = "Tematy ( JSON )"
+
+[node name="UpdateTopicsButton" type="Button" parent="UIRoot/MainMenu/TopicsTextEdit" unique_id=238743467]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -31.0
+offset_right = 100.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Zaktualizuj"
+
+[node name="HostMenu" type="Control" parent="UIRoot" unique_id=388904407]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/HostMenu" unique_id=1714502584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -79.0
+offset_right = 150.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/HostMenu/VBoxContainer" unique_id=1286375600]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer" unique_id=1768370140]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Nazwa"
+
+[node name="RoomNameLineEdit" type="LineEdit" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer" unique_id=1516700040]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Wpisz nazwe pokoju..."
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIRoot/HostMenu/VBoxContainer" unique_id=224169619]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer3" unique_id=876100767]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Liczba graczy"
+
+[node name="MaxPlayersSpinBox" type="SpinBox" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer3" unique_id=1392491684]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+min_value = 2.0
+max_value = 32.0
+value = 6.0
+rounded = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIRoot/HostMenu/VBoxContainer" unique_id=1686473161]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer2" unique_id=1987572529]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Port"
+
+[node name="RoomPortSpinBox" type="SpinBox" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer2" unique_id=113625065]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+min_value = 1024.0
+max_value = 49151.0
+value = 14000.0
+rounded = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="HSeparator" type="HSeparator" parent="UIRoot/HostMenu/VBoxContainer" unique_id=1665185435]
+layout_mode = 2
+
+[node name="CreateRoomButton" type="Button" parent="UIRoot/HostMenu/VBoxContainer" unique_id=935358317]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Stwórz"
+
+[node name="BackButton" type="Button" parent="UIRoot/HostMenu/VBoxContainer" unique_id=491718251]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Wróć"
+
+[node name="JoinMenu" type="Control" parent="UIRoot" unique_id=1309158476]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/JoinMenu" unique_id=362500086]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -79.0
+offset_right = 150.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=819067940]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer" unique_id=974300255]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Adres IP (IPv4)"
+
+[node name="RoomIPAddressLineEdit" type="LineEdit" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer" unique_id=907191746]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Wpisz adres IPv4 hosta"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=881555641]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer2" unique_id=1340085508]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Port"
+
+[node name="RoomPortSpinBox" type="SpinBox" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer2" unique_id=713874024]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+min_value = 1024.0
+max_value = 49151.0
+value = 14000.0
+rounded = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="HSeparator" type="HSeparator" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=996608951]
+layout_mode = 2
+
+[node name="JoinButton" type="Button" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=1337621765]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Dołącz"
+
+[node name="BackButton" type="Button" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=1047011999]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Wróć"
+
+[node name="RoomMenu" type="Control" parent="UIRoot" unique_id=1900871106]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Buttons" type="HBoxContainer" parent="UIRoot/RoomMenu" unique_id=1133055584]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -225.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="StartGameButton" type="Button" parent="UIRoot/RoomMenu/Buttons" unique_id=1320584740]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Rozpocznij"
+
+[node name="LeaveRoomButton" type="Button" parent="UIRoot/RoomMenu/Buttons" unique_id=403879287]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Wyjdź"
+
+[node name="RoomInfo" type="HBoxContainer" parent="UIRoot/RoomMenu" unique_id=119198514]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -53.0
+offset_right = 674.0
+offset_bottom = -25.0
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="RoomMaxPlayersLabel" type="Label" parent="UIRoot/RoomMenu/RoomInfo" unique_id=665933739]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Maksymalna ilość graczy: x"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="UIRoot/RoomMenu/RoomInfo" unique_id=1646745742]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="RoomIPAddressLabel" type="Label" parent="UIRoot/RoomMenu/RoomInfo" unique_id=1259999713]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Adres IP (IPv4): 192.168.x.x"
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="UIRoot/RoomMenu/RoomInfo" unique_id=163500888]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="RoomPortLabel" type="Label" parent="UIRoot/RoomMenu/RoomInfo" unique_id=1598394523]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Port: 14000"
+vertical_alignment = 1
+
+[node name="RoomState" type="VBoxContainer" parent="UIRoot/RoomMenu" unique_id=81425155]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 350.0
+offset_bottom = 50.0
+
+[node name="PlayerList" type="VBoxContainer" parent="UIRoot/RoomMenu/RoomState" unique_id=892207286]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/RoomState/PlayerList" unique_id=1616725617]
+layout_mode = 2
+
+[node name="GameUI" type="Control" parent="UIRoot/RoomMenu" unique_id=893386629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="GameState" type="HBoxContainer" parent="UIRoot/RoomMenu/GameUI" unique_id=1662436943]
+custom_maximum_size = Vector2(-1, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -511.5
+offset_top = -200.0
+offset_right = 511.5
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="GameInputs" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState" unique_id=123850558]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Argument" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/GameInputs" unique_id=1725091334]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/GameInputs/Argument" unique_id=1261605473]
+layout_mode = 2
+text = "Argument"
+
+[node name="ArgumentTextEdit" type="TextEdit" parent="UIRoot/RoomMenu/GameUI/GameState/GameInputs/Argument" unique_id=1943666545]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="Decision" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/GameInputs" unique_id=1741012581]
+custom_maximum_size = Vector2(175, -1)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/GameInputs/Decision" unique_id=1451037292]
+layout_mode = 2
+text = "Decyzja"
+
+[node name="DecisionOptionButton" type="OptionButton" parent="UIRoot/RoomMenu/GameUI/GameState/GameInputs/Decision" unique_id=649524477]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Wysyłam"
+popup/item_0/id = 0
+popup/item_1/text = "Niepewny"
+popup/item_1/id = 1
+popup/item_2/text = "Odrzucam"
+popup/item_2/id = 2
+
+[node name="SendStateButton" type="Button" parent="UIRoot/RoomMenu/GameUI/GameState/GameInputs" unique_id=1196093868]
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+text = "Wyślij"
+
+[node name="VSeparator" type="VSeparator" parent="UIRoot/RoomMenu/GameUI/GameState" unique_id=1665879119]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxFlat_vvh5c")
+
+[node name="Arguments" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState" unique_id=454694056]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/Arguments" unique_id=1373063182]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Argumenty i decyzje"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/RoomMenu/GameUI/GameState/Arguments" unique_id=462162368]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Arguments" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/Arguments/ScrollContainer" unique_id=1008537315]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="VSeparator2" type="VSeparator" parent="UIRoot/RoomMenu/GameUI/GameState" unique_id=2054958106]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxFlat_vvh5c")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/RoomMenu/GameUI/GameState" unique_id=1945866092]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 17
+
+[node name="GameInputs2" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer" unique_id=80388038]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+
+[node name="Question" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2" unique_id=197542803]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/Question" unique_id=420735017]
+layout_mode = 2
+text = "Pytanie"
+
+[node name="QuestionTextEdit" type="TextEdit" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/Question" unique_id=435277511]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="QuestionTo" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2" unique_id=1608402455]
+custom_maximum_size = Vector2(175, -1)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/QuestionTo" unique_id=1199783085]
+layout_mode = 2
+text = "Do"
+
+[node name="QuestionToOptionButton" type="OptionButton" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/QuestionTo" unique_id=677457291]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Wysyłam"
+popup/item_0/id = 0
+popup/item_1/text = "Niepewny"
+popup/item_1/id = 1
+popup/item_2/text = "Odrzucam"
+popup/item_2/id = 2
+
+[node name="SendQuestionButton" type="Button" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2" unique_id=1488862894]
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+text = "Wyślij"
+
+[node name="Answer" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2" unique_id=1262703791]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/Answer" unique_id=559364995]
+layout_mode = 2
+text = "Odpowiedź"
+
+[node name="QuestionTextEdit" type="TextEdit" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/Answer" unique_id=1203242966]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="AnswerTo" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2" unique_id=864342898]
+custom_maximum_size = Vector2(175, -1)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/AnswerTo" unique_id=1941470993]
+layout_mode = 2
+text = "Do"
+
+[node name="QuestionToOptionButton" type="OptionButton" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/AnswerTo" unique_id=706414811]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Wysyłam"
+popup/item_0/id = 0
+popup/item_1/text = "Niepewny"
+popup/item_1/id = 1
+popup/item_2/text = "Odrzucam"
+popup/item_2/id = 2
+
+[node name="SendAnswerButton" type="Button" parent="UIRoot/RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2" unique_id=1377469891]
+custom_maximum_size = Vector2(100, -1)
+layout_mode = 2
+text = "Wyślij"
+
+[node name="VSeparator3" type="VSeparator" parent="UIRoot/RoomMenu/GameUI/GameState" unique_id=250208199]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxFlat_vvh5c")
+
+[node name="QnA" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState" unique_id=1848253065]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/GameUI/GameState/QnA" unique_id=1627956523]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Pytania i odpowiedzi"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/RoomMenu/GameUI/GameState/QnA" unique_id=1210420472]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Arguments" type="VBoxContainer" parent="UIRoot/RoomMenu/GameUI/GameState/QnA/ScrollContainer" unique_id=894807617]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="RoleLabel" type="RichTextLabel" parent="UIRoot/RoomMenu/GameUI" unique_id=1460905035]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 25.0
+offset_right = 100.0
+offset_bottom = 75.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Jestes manipulatorem"
+vertical_alignment = 1

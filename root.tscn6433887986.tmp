@@ -1,0 +1,391 @@
+[gd_scene format=3 uid="uid://cuaunoxjedrjy"]
+
+[ext_resource type="Script" uid="uid://cuy23l147w5by" path="res://src/scripts/ui.gd" id="1_pq8q7"]
+
+[node name="Root" type="Node" unique_id=855036723]
+
+[node name="UIRoot" type="Control" parent="." unique_id=735676337 node_paths=PackedStringArray("main_menu", "main_menu_host_button", "main_menu_join_button", "host_menu", "host_menu_room_name_line_edit", "host_menu_room_max_players_spin_box", "host_menu_room_port_spin_box", "host_menu_create_room_button", "join_menu", "join_menu_room_ip_address_line_edit", "join_menu_room_port_spin_box", "join_menu_join_button", "room_menu", "room_menu_room_ip_address_label", "room_menu_room_max_players_label", "room_menu_room_player_list_vbox", "back_buttons", "send_info_button", "argument_text_edit", "decision_option_button", "t")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pq8q7")
+main_menu = NodePath("MainMenu")
+main_menu_host_button = NodePath("MainMenu/VBoxContainer/HostButton")
+main_menu_join_button = NodePath("MainMenu/VBoxContainer/JoinButton")
+host_menu = NodePath("HostMenu")
+host_menu_room_name_line_edit = NodePath("HostMenu/VBoxContainer/HBoxContainer/RoomNameLineEdit")
+host_menu_room_max_players_spin_box = NodePath("HostMenu/VBoxContainer/HBoxContainer3/MaxPlayersSpinBox")
+host_menu_room_port_spin_box = NodePath("HostMenu/VBoxContainer/HBoxContainer2/RoomPortSpinBox")
+host_menu_create_room_button = NodePath("HostMenu/VBoxContainer/CreateRoomButton")
+join_menu = NodePath("JoinMenu")
+join_menu_room_ip_address_line_edit = NodePath("JoinMenu/VBoxContainer/HBoxContainer/RoomIPAddressLineEdit")
+join_menu_room_port_spin_box = NodePath("JoinMenu/VBoxContainer/HBoxContainer2/RoomPortSpinBox")
+join_menu_join_button = NodePath("JoinMenu/VBoxContainer/JoinButton")
+room_menu = NodePath("RoomMenu")
+room_menu_room_ip_address_label = NodePath("RoomMenu/RoomInfo/RoomIPAddressLabel")
+room_menu_room_max_players_label = NodePath("RoomMenu/RoomInfo/RoomMaxPlayersLabel")
+room_menu_room_player_list_vbox = NodePath("RoomMenu/RoomState/PlayerList")
+back_buttons = [NodePath("HostMenu/VBoxContainer/BackButton"), NodePath("JoinMenu/VBoxContainer/BackButton")]
+send_info_button = NodePath("GameplayOverlay/GameInfo/SendInfoButton")
+argument_text_edit = NodePath("GameplayOverlay/GameInfo/ArgumentTextEdit")
+decision_option_button = NodePath("GameplayOverlay/GameInfo/DecisionOptionButton")
+t = NodePath("GameplayOverlay/GameInfo/t")
+metadata/_edit_lock_ = true
+
+[node name="GameplayOverlay" type="Control" parent="UIRoot" unique_id=2073885208]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="GameInfo" type="VBoxContainer" parent="UIRoot/GameplayOverlay" unique_id=123850558]
+layout_mode = 1
+offset_left = -620.0
+offset_top = -340.0
+offset_right = -420.0
+offset_bottom = 160.0
+
+[node name="ArgumentTextEdit" type="TextEdit" parent="UIRoot/GameplayOverlay/GameInfo" unique_id=1943666545]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="DecisionOptionButton" type="OptionButton" parent="UIRoot/GameplayOverlay/GameInfo" unique_id=649524477]
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Post"
+popup/item_0/id = 0
+popup/item_1/text = "Unsure"
+popup/item_1/id = 1
+popup/item_2/text = "Reject"
+popup/item_2/id = 2
+
+[node name="SendInfoButton" type="Button" parent="UIRoot/GameplayOverlay/GameInfo" unique_id=1196093868]
+layout_mode = 2
+text = "Send"
+
+[node name="t" type="Label" parent="UIRoot/GameplayOverlay/GameInfo" unique_id=1268925303]
+layout_mode = 2
+
+[node name="MainMenu" type="Control" parent="UIRoot" unique_id=813058915]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="GameTitleLabel" type="Label" parent="UIRoot/MainMenu" unique_id=75068674]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -210.0
+offset_right = 124.5
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Nazwa Gry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/MainMenu" unique_id=816491704]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -15.5
+offset_right = 100.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HostButton" type="Button" parent="UIRoot/MainMenu/VBoxContainer" unique_id=587234153]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Hostuj"
+
+[node name="JoinButton" type="Button" parent="UIRoot/MainMenu/VBoxContainer" unique_id=1651110315]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Dołącz"
+
+[node name="HostMenu" type="Control" parent="UIRoot" unique_id=388904407]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/HostMenu" unique_id=1714502584]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -79.0
+offset_right = 150.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/HostMenu/VBoxContainer" unique_id=1286375600]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer" unique_id=1768370140]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Nazwa"
+
+[node name="RoomNameLineEdit" type="LineEdit" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer" unique_id=1516700040]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Wpisz nazwe pokoju..."
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIRoot/HostMenu/VBoxContainer" unique_id=224169619]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer3" unique_id=876100767]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Liczba graczy"
+
+[node name="MaxPlayersSpinBox" type="SpinBox" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer3" unique_id=1392491684]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+min_value = 2.0
+max_value = 32.0
+value = 6.0
+rounded = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIRoot/HostMenu/VBoxContainer" unique_id=1686473161]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer2" unique_id=1987572529]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Port"
+
+[node name="RoomPortSpinBox" type="SpinBox" parent="UIRoot/HostMenu/VBoxContainer/HBoxContainer2" unique_id=113625065]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+min_value = 1024.0
+max_value = 49151.0
+value = 14000.0
+rounded = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="HSeparator" type="HSeparator" parent="UIRoot/HostMenu/VBoxContainer" unique_id=1665185435]
+layout_mode = 2
+
+[node name="CreateRoomButton" type="Button" parent="UIRoot/HostMenu/VBoxContainer" unique_id=935358317]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Stwórz"
+
+[node name="BackButton" type="Button" parent="UIRoot/HostMenu/VBoxContainer" unique_id=491718251]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Wróć"
+
+[node name="JoinMenu" type="Control" parent="UIRoot" unique_id=1309158476]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/JoinMenu" unique_id=362500086]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -79.0
+offset_right = 150.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=819067940]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer" unique_id=974300255]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Adres IP (IPv4)"
+
+[node name="RoomIPAddressLineEdit" type="LineEdit" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer" unique_id=907191746]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Wpisz adres IPv4 hosta"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=881555641]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer2" unique_id=1340085508]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Port"
+
+[node name="RoomPortSpinBox" type="SpinBox" parent="UIRoot/JoinMenu/VBoxContainer/HBoxContainer2" unique_id=713874024]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+min_value = 1024.0
+max_value = 49151.0
+value = 14000.0
+rounded = true
+alignment = 1
+select_all_on_focus = true
+
+[node name="HSeparator" type="HSeparator" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=996608951]
+layout_mode = 2
+
+[node name="JoinButton" type="Button" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=1337621765]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Dołącz"
+
+[node name="BackButton" type="Button" parent="UIRoot/JoinMenu/VBoxContainer" unique_id=1047011999]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Wróć"
+
+[node name="RoomMenu" type="Control" parent="UIRoot" unique_id=1900871106]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/RoomMenu" unique_id=1143036788]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -79.0
+offset_right = 150.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="RoomCodeLineEdit" type="LineEdit" parent="UIRoot/RoomMenu/VBoxContainer" unique_id=135071812]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Wpisz kod pokoju..."
+
+[node name="JoinButton" type="Button" parent="UIRoot/RoomMenu/VBoxContainer" unique_id=1320584740]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Dolacz"
+
+[node name="BackButton" type="Button" parent="UIRoot/RoomMenu/VBoxContainer" unique_id=403879287]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Wroc"
+
+[node name="RoomInfo" type="VBoxContainer" parent="UIRoot/RoomMenu" unique_id=1838021389]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -118.0
+offset_right = 350.0
+offset_bottom = -50.0
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="RoomIPAddressLabel" type="Label" parent="UIRoot/RoomMenu/RoomInfo" unique_id=1259999713]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Adres IP (IPv4): 192.168.x.x"
+vertical_alignment = 1
+
+[node name="RoomMaxPlayersLabel" type="Label" parent="UIRoot/RoomMenu/RoomInfo" unique_id=665933739]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Maksymalna liczba graczy: x"
+vertical_alignment = 1
+
+[node name="RoomState" type="VBoxContainer" parent="UIRoot/RoomMenu" unique_id=81425155]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 350.0
+offset_bottom = 50.0
+
+[node name="PlayerList" type="VBoxContainer" parent="UIRoot/RoomMenu/RoomState" unique_id=892207286]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIRoot/RoomMenu/RoomState/PlayerList" unique_id=1616725617]
+layout_mode = 2

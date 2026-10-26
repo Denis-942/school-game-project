@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b8w42iwgm4chm"]
+
+[ext_resource type="Script" uid="uid://q56p66lwusb2" path="res://src/scripts/player.gd" id="1_cusn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4rts"]
+size = Vector2(200, 200)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cusn3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" unique_id=230140934]
+script = ExtResource("1_cusn3")
+metadata/_custom_type_script = "uid://q56p66lwusb2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252872142]
+shape = SubResource("RectangleShape2D_v4rts")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1928847326]
+replication_config = SubResource("SceneReplicationConfig_cusn3")

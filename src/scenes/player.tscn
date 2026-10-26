@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b8w42iwgm4chm"]
+
+[ext_resource type="Script" uid="uid://q56p66lwusb2" path="res://src/scripts/player.gd" id="1_cusn3"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cusn3"]
+properties/0/path = NodePath(".:nickname")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Player" type="Node" unique_id=2026254433 node_paths=PackedStringArray("_synchronizer")]
+script = ExtResource("1_cusn3")
+_synchronizer = NodePath("MultiplayerSynchronizer")
+metadata/_custom_type_script = "uid://q56p66lwusb2"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1322229600]
+replication_config = SubResource("SceneReplicationConfig_cusn3")
