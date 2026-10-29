@@ -48,6 +48,7 @@ var menus: Array[Control]
 @export var room_menu_game_answer_send_button: Button
 @export var room_menu_game_questions_and_answers_vbox: VBoxContainer
 @export var room_menu_game_role_label: RichTextLabel
+@export var room_menu_game_topic_label: Label
 
 @export_subgroup("Back Buttons")
 @export var back_buttons: Array[Button]
@@ -73,6 +74,7 @@ func _ready() -> void:
 		)
 	join_menu_join_button.pressed.connect(func() -> void:
 		var addr := join_menu_room_ip_address_line_edit.text.strip_edges()
+		print("addr ", addr)
 		var port := int(join_menu_room_port_spin_box.value)
 		Game.join_room(addr, port)
 		)
@@ -119,7 +121,19 @@ func _ready() -> void:
 		Game.update_topics(topics)
 		)
 	
-	join_menu_room_ip_address_line_edit.text = Game.get_ipv4_address()
+	room_menu_game_send_state_button.pressed.connect(func() -> void:
+		var sender_id: int = Game.player.get_multiplayer_authority()
+		var decision_type := room_menu_game_decision_option_button.get_selected_id() as Game.DecisionType
+		var text: String = room_menu_game_argument_text_edit.text
+		Game.send_argument(sender_id, decision_type, text)
+		)
+	
+	
+	Game.topic_set.connect(func(topic: Topic) -> void:
+		room_menu_game_topic_label.text = "Post: %s\nOpis: %s" % [topic.header, topic.text]
+		)
+	
+	#join_menu_room_ip_address_line_edit.text = Game.get_ipv4_address()
 	
 	#main_menu_update_topics_button.pressed.connect(func() -> void:
 	#	var s: String = main_menu_topics_text_edit.text
@@ -210,6 +224,29 @@ func _on_room_data_updated(data: RoomData) -> void:
 			room_menu_game_role_label.text = "Jesteś [color=light_blue]Użytkownikiem[/color]"
 		Player.Role.MANIPULATOR:
 			room_menu_game_role_label.text = "Jesteś [color=red]Manipulatorem[/color]"
+	
+	
+	for child in room_menu_game_arguments_vbox.get_children():
+		child.queue_free()
+	
+	for arg_dict: Dictionary in data.arguments:
+		var label := Label.new()
+		var sender: Player = Game.get_player(arg_dict["sender_id"])
+		var decision_type: Game.DecisionType = arg_dict["decision_type"]
+		#var sender: Player = Game.get_player(qna_dict["sender_id"])
+		#var receiver: Player = Game.get_player(qna_dict["receiver_id"])
+		var text: String = arg_dict["text"]
+		var decision_string: String
+		if decision_type == Game.DecisionType.POST:
+			decision_string = "Udostępnił(a)"
+		elif decision_type == Game.DecisionType.UNSURE:
+			decision_string = "Niepewny(a)"
+		elif decision_type == Game.DecisionType.REJECT:
+			decision_string = "Odrzucił(a)"
+		label.text = "%s\nDecyzja: %s\n%s" % [
+			sender.nickname, decision_string, text
+		]
+		room_menu_game_arguments_vbox.add_child(label)
 
 
 func show_error(error: String) -> void:

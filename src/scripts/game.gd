@@ -141,6 +141,7 @@ func leave_room() -> void:
 	return
 
 
+var _topic_index: int
 func start_game() -> void:
 	if not multiplayer.is_server():
 		return
@@ -152,10 +153,13 @@ func start_game() -> void:
 		else:
 			_assign_role.rpc_id(player_id, Player.Role.USER)
 	
+	_topic_index = randi_range(0, _topics.size() - 1)
+	#var topic: Topic = _topics[_topic_index]
 	var st: Array[Dictionary]
 	for t: Topic in _topics:
 		st.append(t.serialized())
 	_assign_topics.rpc(st)
+	_set_topic.rpc(_topic_index)
 	_update_room_data.rpc(_room_data.serialized())
 
 @rpc("authority", "call_local")
@@ -164,6 +168,12 @@ func _start_game() -> void:
 	game_started.emit()
 	#print(_topics)
 	#_assign_topics.rpc(_topics)
+	var st: Array[Dictionary]
+	for t: Topic in _topics:
+		st.append(t.serialized())
+	_assign_topics.rpc(st)
+	#var t: Topic = _topics.pick_random()
+	#_set_topic.rpc(t)
 	#_start_round.rpc(_round + 1)
 	#_start_phase.rpc(_phase + 1)
 
@@ -301,8 +311,31 @@ func _assign_topics(arr: Array[Dictionary]) -> void:
 	_topics.clear()
 	for serialized_topic: Dictionary in arr:
 		_topics.append(Topic.deserialized(serialized_topic))
-	print("%d: " % player.get_multiplayer_authority(), _topics)
+	print(_topics)
+	#print("%d: " % player.get_multiplayer_authority(), _topics)
 
 @rpc("authority", "call_local")
-func _set_topic(topic_index: int) -> void:
-	topic_set.emit(_topics[topic_index])
+func _set_topic(index: int) -> void:
+	topic_set.emit(_topics[index])
+
+
+
+@rpc("authority", "call_local")
+func _add_argument(sender_id: int, decision_type: DecisionType, text: String) -> void:
+	if not multiplayer.is_server():
+		#print("not server")
+		return
+	_room_data.arguments.append({
+		"sender_id": sender_id,
+		"decision_type": decision_type,
+		"text": text
+	})
+	#print("called")
+	_update_room_data.rpc(_room_data.serialized())
+
+func send_argument(sender_id: int, decision_type: DecisionType, text: String) -> void:
+	_handle_send_argument.rpc_id(1, sender_id, decision_type, text)
+
+@rpc("any_peer", "call_local")
+func _handle_send_argument(sender_id: int, decision_type: DecisionType, text: String) -> void:
+	_add_argument.rpc(sender_id, decision_type, text)

@@ -13,7 +13,7 @@ expand_margin_bottom = 25.0
 
 [node name="Players" type="Node" parent="." unique_id=1827655955]
 
-[node name="UIRoot" type="Control" parent="." unique_id=735676337 node_paths=PackedStringArray("main_menu", "main_menu_nickname_line_edit", "main_menu_host_button", "main_menu_join_button", "main_menu_topics_text_edit", "main_menu_update_topics_button", "host_menu", "host_menu_room_name_line_edit", "host_menu_room_max_players_spin_box", "host_menu_room_port_spin_box", "host_menu_create_room_button", "join_menu", "join_menu_room_ip_address_line_edit", "join_menu_room_port_spin_box", "join_menu_join_button", "room_menu", "room_menu_start_button", "room_menu_leave_button", "room_menu_room_max_players_label", "room_menu_room_ip_address_label", "room_menu_room_port_label", "room_menu_room_player_list_vbox", "room_menu_game_ui", "room_menu_game_argument_text_edit", "room_menu_game_decision_option_button", "room_menu_game_send_state_button", "room_menu_game_arguments_vbox", "room_menu_game_question_text_edit", "room_menu_game_question_receiver_option_button", "room_menu_game_question_send_button", "room_menu_game_answer_text_edit", "room_menu_game_answer_receiver_option_button", "room_menu_game_answer_send_button", "room_menu_game_questions_and_answers_vbox", "room_menu_game_role_label", "back_buttons", "error_labels")]
+[node name="UIRoot" type="Control" parent="." unique_id=735676337 node_paths=PackedStringArray("main_menu", "main_menu_nickname_line_edit", "main_menu_host_button", "main_menu_join_button", "main_menu_topics_text_edit", "main_menu_update_topics_button", "host_menu", "host_menu_room_name_line_edit", "host_menu_room_max_players_spin_box", "host_menu_room_port_spin_box", "host_menu_create_room_button", "join_menu", "join_menu_room_ip_address_line_edit", "join_menu_room_port_spin_box", "join_menu_join_button", "room_menu", "room_menu_start_button", "room_menu_leave_button", "room_menu_room_max_players_label", "room_menu_room_ip_address_label", "room_menu_room_port_label", "room_menu_room_player_list_vbox", "room_menu_game_ui", "room_menu_game_argument_text_edit", "room_menu_game_decision_option_button", "room_menu_game_send_state_button", "room_menu_game_arguments_vbox", "room_menu_game_question_text_edit", "room_menu_game_question_receiver_option_button", "room_menu_game_question_send_button", "room_menu_game_answer_text_edit", "room_menu_game_answer_receiver_option_button", "room_menu_game_answer_send_button", "room_menu_game_questions_and_answers_vbox", "room_menu_game_role_label", "room_menu_game_topic_label", "back_buttons", "error_labels")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +56,7 @@ room_menu_game_answer_receiver_option_button = NodePath("RoomMenu/GameUI/GameSta
 room_menu_game_answer_send_button = NodePath("RoomMenu/GameUI/GameState/ScrollContainer/GameInputs2/SendAnswerButton")
 room_menu_game_questions_and_answers_vbox = NodePath("RoomMenu/GameUI/GameState/QnA/ScrollContainer/Arguments")
 room_menu_game_role_label = NodePath("RoomMenu/GameUI/RoleLabel")
+room_menu_game_topic_label = NodePath("RoomMenu/GameUI/TopicLabel")
 back_buttons = [NodePath("HostMenu/VBoxContainer/BackButton"), NodePath("JoinMenu/VBoxContainer/BackButton")]
 error_labels = NodePath("Other/ErrorLabels")
 metadata/_edit_lock_ = true
@@ -86,22 +87,6 @@ grow_vertical = 0
 mouse_filter = 2
 alignment = 2
 reverse_sort = true
-
-[node name="GameplayOverlay" type="Control" parent="UIRoot" unique_id=2073885208]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="MainMenu" type="Control" parent="UIRoot" unique_id=813058915]
 layout_mode = 1
@@ -159,7 +144,7 @@ text = "Nazwa"
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
-placeholder_text = "Wpisz swój nick..."
+placeholder_text = "Wpisz swoją nazwe..."
 
 [node name="HostButton" type="Button" parent="UIRoot/MainMenu/VBoxContainer" unique_id=587234153]
 custom_minimum_size = Vector2(200, 0)
@@ -185,7 +170,6 @@ theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 text = "[
 	{
-		\"type\": <0|1>, // 0 = Fałsz, 1 = Prawda
 		\"header\": <string>,
 		\"text\": <string>
 	},
@@ -214,7 +198,12 @@ offset_top = -425.00006
 offset_right = 325.0
 offset_bottom = -25.000061
 grow_vertical = 0
-text = "[{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},{\"type\": 0,\"header\": \"h\",\"text\": \"text\"},]"
+placeholder_text = "[
+	{
+		\"header\": \"temat...\",
+		\"text\": \"tekst...\"
+	},
+]"
 
 [node name="Label" type="Label" parent="UIRoot/MainMenu/TopicsTextEdit" unique_id=821745323]
 layout_mode = 1
@@ -235,12 +224,54 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
+offset_left = 10.0
 offset_top = -31.0
-offset_right = 100.0
+offset_right = 162.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Zaktualizuj"
+text = "Zaktualizuj tematy"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIRoot/MainMenu" unique_id=1296073310]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TutorialLabel" type="Label" parent="UIRoot/MainMenu/ScrollContainer" unique_id=433215374]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "[ Host ]
+
+- skopiuj szablon tematów (lewy góry róg) i napisz tematy w formacie JSON (lub wygeneruj tematy używając AI)
+- gotowe tematy (w poprawnym formacie JSON) skopiuj do poja poniżej i wciśnij przycisk \"Zaktualizuj tematy\"
+- podaj nazwe gracza
+- wciśnij \"Hostuj\" -> \"Stwórz\"
+
+W stworzonym pokoju lewym dolnym rogu będą wyświetlone informacje takie jak Port i Adres IP
+Pokazany Adres IP może być błędny, jeżeli są problemy z dołączeniem to otwórz program CMD w Windows i wpisz \"ipcofig\" i sprawdź swój prywatny adres IP (IPv4)
+
+
+[ Klient ]
+
+- podaj nazwe gracza
+- wciśnij \"Dołącz\"
+- wpisz Adres IP hosta oraz Port na którym jest pokój
+- ponownie wciśnij \"Dołącz\"
+
+
+[ Rozgrywka ]
+
+Host może wciśnąć przycisk \"Rozpocznij\" aby rozpocząć grę, każdemu graczu w pokoju wyświetla się wtedy panel gry"
+autowrap_mode = 3
 
 [node name="HostMenu" type="Control" parent="UIRoot" unique_id=388904407]
 visible = false
@@ -268,6 +299,7 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/HostMenu/VBoxContainer" unique_id=1286375600]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 2
@@ -517,7 +549,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="GameState" type="HBoxContainer" parent="UIRoot/RoomMenu/GameUI" unique_id=1662436943]
-custom_maximum_size = Vector2(-1, 400)
+custom_maximum_size = Vector2(-1, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -525,9 +557,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -511.5
-offset_top = -200.0
+offset_top = -110.0
 offset_right = 511.5
-offset_bottom = 200.0
+offset_bottom = 190.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
@@ -727,3 +759,15 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Jestes manipulatorem"
 vertical_alignment = 1
+
+[node name="TopicLabel" type="Label" parent="UIRoot/RoomMenu/GameUI" unique_id=2088151872]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 100.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24

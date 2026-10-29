@@ -8,7 +8,7 @@ var players: Array[int]
 var max_players: int = Game.default_max_players
 var is_playing: bool = false
 var qna: Array[Dictionary]
-var decisions: Dictionary[int, int]
+var arguments: Array[Dictionary]
 
 
 func serialized() -> Dictionary:
@@ -20,7 +20,7 @@ func serialized() -> Dictionary:
 		"max_players": max_players,
 		"is_playing": is_playing,
 		"qna": qna,
-		"decisions": decisions,
+		"arguments": arguments,
 		}
 
 static func deserialized(dict: Dictionary) -> RoomData:
@@ -32,7 +32,7 @@ static func deserialized(dict: Dictionary) -> RoomData:
 	data.max_players = dict["max_players"] as int
 	data.is_playing = dict["is_playing"] as bool
 	data.qna = dict["qna"] as Array[Dictionary]
-	data.decisions = dict["decisions"] as Dictionary[int, int]
+	data.arguments = dict["arguments"] as Array[Dictionary]
 	return data
 
 
@@ -45,5 +45,5 @@ func copy() -> RoomData:
 	data.max_players = max_players
 	data.is_playing = is_playing
 	data.qna = qna.duplicate_deep()
-	data.decisions = decisions.duplicate()
+	data.arguments = arguments.duplicate_deep()
 	return data
